@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context="com.example.coursiset.MainActivity">
+    <item
+
+        android:id="@+id/action_toggel"
+android:icon="@drawable/outline_grid_view_white_24dp"
+        android:orderInCategory="100"
+        android:title="@string/show_as_grid"
+        app:showAsAction="always" />
+</menu>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/coursimaageVid"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/authimageid"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+
+
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="326dp"
+                android:layout_marginEnd="15dp"
+
+                android:src="@mipmap/ic_launcher_round"
+                app:civ_border_color="#FF5722"
+                android:layout_alignBottom="@+id/coursimaageVid"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/courstxtid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/coursimaageVid"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="272dp"
+                android:layout_marginBottom="8dp"
+                android:text="TextView"
+                android:textSize="24sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

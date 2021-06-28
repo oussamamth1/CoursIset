@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/constra"
+    android:layout_height="match_parent"
+    android:background="#B3AB6B">
+
+    <TextView
+        android:layout_width="252dp"
+        android:layout_height="48dp"
+
+        android:layout_marginStart="130dp"
+
+        android:layout_marginTop="200dp"
+        android:text="Sing IN Here ..."
+        android:textColor="#39416C"
+        android:textSize="24dp"
+        android:textStyle="italic"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="403dp"
+        android:layout_height="618dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#A31616"
+        app:cardCornerRadius="@android:dimen/notification_large_icon_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="#EDEFD6"
+            android:padding="15dp">
+
+            <EditText
+                android:id="@+id/userfirstaccu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/username" />
+
+            <EditText
+
+                android:id="@+id/userLasttaccu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userfirstaccu"
+                android:layout_marginTop="20dp"
+                android:hint="@string/userLastname" />
+
+            <EditText
+
+                android:id="@+id/userMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userLasttaccu"
+                android:layout_marginTop="20dp"
+                android:hint="@string/email" />
+
+            <EditText
+
+                android:id="@+id/userpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userMail"
+                android:layout_marginTop="20dp"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+
+            <EditText
+
+                android:id="@+id/userpasswordver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userpassword"
+                android:layout_marginTop="20dp"
+                android:hint="@string/passwordVer"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/buttonCreat"
+                android:layout_width="245dp"
+                android:layout_height="70dp"
+                android:layout_below="@+id/userpasswordver"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="69dp"
+                android:layout_marginTop="72dp"
+                android:layout_marginEnd="75dp"
+                android:background="#FF9800"
+                android:text="Create Account"
+                android:textColor="#3F51B5" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

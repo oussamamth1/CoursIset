@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">CoursIset</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="texthint">"userlogin"</string>
+    <string name="show_as_grid">"show as grid"</string>
+    <string name="show_as_list">"show as List"</string>
+
+    <string name="passwordhint">Password</string>
+    <string name="login_buttn">LOGIN</string>
+    <string name="creat">Create Account</string>
+    <string name="username">First Name</string>
+    <string name="userLastname">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">PassWord Have to Be Strong</string>
+    <string name="passwordVer">Confirem PassWord</string>
+</resources>
