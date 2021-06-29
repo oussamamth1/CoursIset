@@ -3,6 +3,13 @@ package com.example.coursiset.data;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.Nullable;
+//import android.support.v7.graphics.Palette;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -37,10 +47,11 @@ public OnItemClickListener itemClickListener;
         return new ViewHolder(cours_row);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 //bind data n view
-    Context context=holder.courstitle.getContext();
+    final Context context=holder.courstitle.getContext();
         Cours cours=coursdata.coursArrayList().get(position);
 holder.courstitle.setText(cours.getcoursname());
 
@@ -50,7 +61,14 @@ holder.courstitle.setText(cours.getcoursname());
        Glide.with(holder.courstitle.getContext()).load(cours.getImageResourcid(holder.courstitle.getContext())).into(holder.courseImage);
 //Picasso.with(holder.courstitle.getContext()).load(cours.getImageResourcid(context)).into(holder.courseImage);
 //the photo of withch row that we are fetshing
-//Bitmap photo= BitmapFactory.decodeResource(context.getResources(),cours.getImageResourcid(context));
+Bitmap photo= BitmapFactory.decodeResource(context.getResources(),cours.getImageResourcid(context));
+       /* Palette.from(photo).generate(new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(@Nullable Palette palette) {
+                palette.getLightMutedColor(ContextCompat.getColor(context, android.R.color.background_dark));
+            }
+        });*/
+       
 
     }
 

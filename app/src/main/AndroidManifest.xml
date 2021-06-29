@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CoursIset">
+        <activity
+            android:name=".CoursDetail"
+            android:label="@string/title_activity_main_activity2_d"
+            android:theme="@style/Theme.CoursIset.NoActionBar"></activity>
         <activity android:name=".cotroller.CreateAccountuserActivity" />
-       <activity android:name=".cotroller.DashborActivity" /><!--<activity android:name=".MainActivity" />-->
+        <activity android:name=".cotroller.DashborActivity" /> <!-- <activity android:name=".MainActivity" /> -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

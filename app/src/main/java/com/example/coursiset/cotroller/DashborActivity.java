@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.coursiset.CoursDetail;
 import com.example.coursiset.R;
 import com.example.coursiset.data.CoursAdapter;
 
@@ -19,6 +21,7 @@ private StaggeredGridLayoutManager staggeredGridLayoutManager;
 private CoursAdapter adapter;
 public Menu menu;
 public boolean Listview=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +35,15 @@ public boolean Listview=false;
         adapter.setOnClickListener(new CoursAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(DashborActivity.this,"clicked on "+position,Toast.LENGTH_SHORT).show();
+               // Toast.makeText(DashborActivity.this,"clicked on "+position,Toast.LENGTH_SHORT).show();
+                startActivity(newintent(DashborActivity.this,position));
             }
         });
+    }
+    public Intent newintent(Context context, int position){
+        Intent intent =new Intent(context, CoursDetail.class);
+        intent.putExtra("cours_id",position);
+        return intent;
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
