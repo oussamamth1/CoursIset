@@ -12,7 +12,7 @@
         <activity
             android:name=".CoursDetail"
             android:label="@string/title_activity_main_activity2_d"
-            android:theme="@style/Theme.CoursIset.NoActionBar"></activity>
+            android:theme="@style/Theme.CoursIset.NoActionBar" />
         <activity android:name=".cotroller.CreateAccountuserActivity" />
         <activity android:name=".cotroller.DashborActivity" /> <!-- <activity android:name=".MainActivity" /> -->
         <activity

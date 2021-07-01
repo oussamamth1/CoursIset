@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".cotroller.DetailAc">
+    tools:context=".CoursDetail">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -30,20 +30,21 @@
     android:id="@+id/Detailcoursimage"
     android:layout_width="match_parent"
     android:layout_height="220dp"
+    android:background="#A5724D"
     android:scaleType="centerCrop"
     />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/relativeview"
-            android:background="#A5724D"
+
             android:orientation="vertical">
 <EditText
     android:layout_width="match_parent"
     android:id="@+id/edittextdetail"
   android:layout_gravity="center"
     android:layout_marginTop="90dp"
-    android:textColor="@color/white"
+    android:textColor="#FFFFFF"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
     android:layout_height="wrap_content"/>
@@ -63,27 +64,31 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/detailidcourstitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
-android:textColor="#394FCA"
+android:textColor="#2C41B6"
                 android:layout_gravity="center_vertical" />
 
         </LinearLayout>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="50dp"
             android:id="@+id/buttonadd"
+
             android:layout_height="50dp"
             android:layout_gravity="end"
+            android:layout_marginTop="39dp"
             android:layout_marginEnd="10dp"
-            android:alpha="0.0"
+            android:alpha="0.7"
             android:elevation="6dp"
-            android:src="@android:drawable/ic_input_add"
-            android:layout_marginTop="39dp"/>
+            android:rotationX="-8"
+            android:rotationY="-20"
+            android:src="@android:drawable/ic_input_add" />
 
 
     </FrameLayout>
