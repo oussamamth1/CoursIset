@@ -10,11 +10,15 @@ import android.os.Bundle;
 
 import com.example.coursiset.cotroller.CreateAccountuserActivity;
 import com.example.coursiset.cotroller.DashborActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -24,6 +28,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.coursiset.databinding.ActivityMainBinding;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 //import com.google.firebase.auth.FirebaseAuth;
 //import com.google.firebase.auth.FirebaseUser;
 
@@ -32,15 +38,17 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 private Button Login;
-private EditText email;
+private EditText Email;
+FirebaseAuth mAuth;
 
-
-private EditText password;
+private ProgressBar LoginProg;
+private EditText Password;
 private TextView creatAccount;
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
@@ -48,34 +56,65 @@ private TextView creatAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // mAuth = FirebaseAuth.getInstance();
+       mAuth = FirebaseAuth.getInstance();
+       LoginProg=findViewById(R.id.LoginProgr);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 Login=findViewById(R.id.loginbutton);
 creatAccount=findViewById(R.id.singin);
-email=findViewById(R.id.Login);
-password=findViewById(R.id.Password);
+        Email=findViewById(R.id.Login);
+        Password=findViewById(R.id.Password);
         setSupportActionBar(binding.toolbar);
+
 
 Login.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(MainActivity.this, DashborActivity.class));
+        String email=Email.getText().toString().trim();
+        String passwd=Password.getText().toString().trim();
+        if(TextUtils.isEmpty(email)){
+            Email.setError("Email is required");
+            return;
+        }
+        if(TextUtils.isEmpty(passwd)){
+            Password.setError("Password is required");
+            return;
+        }
+        if(passwd.length() <6){
+            Password.setError("Password has to be more then 6 Carateur");
+            return;
+        }
+       // LoginProg.setVisibility(View.VISIBLE);
+        mAuth.signInWithEmailAndPassword(email,passwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull  Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                   startActivity(new Intent(getApplicationContext(),DashborActivity.class));
+                    Toast.makeText(MainActivity.this,"wellcom" + email,Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(MainActivity.this,"Errer try to sign in " + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 });
 creatAccount.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(MainActivity.this, CreateAccountuserActivity.class));
+        startActivity(new Intent(MainActivity.this,CreateAccountuserActivity.class));
+        //finish();
+        Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 });
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                       .setAction("Action", null).show();
             }
+
         });
     }
 
@@ -100,8 +139,8 @@ creatAccount.setOnClickListener(new View.OnClickListener() {
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
         if (networkInfo == null || !networkInfo.isConnected() || !networkInfo.isAvailable()) { showDialog();}
-        else if (email.getText().toString().length() == 0){   email.setError("Email is required!");}
-        else if (password.getText().toString().length() == 0) {   password.setError("Password is required!");}
+        else if (Email.getText().toString().length() == 0){   Email.setError("Email is required!");}
+        else if (Password.getText().toString().length() == 0) {   Password.setError("Password is required!");}
 
         else {
 

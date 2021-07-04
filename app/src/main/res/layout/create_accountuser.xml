@@ -95,7 +95,7 @@
                 android:id="@+id/buttonCreatUserAcc"
                 android:layout_width="245dp"
                 android:layout_height="70dp"
-                android:layout_below="@+id/userpasswordver"
+                android:layout_below="@+id/Phone"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="69dp"
@@ -104,6 +104,19 @@
                 android:background="#FF9800"
                 android:text="Create Account"
                 android:textColor="#3F51B5" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonCreatUserAcc"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="144dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="167dp"
+                android:visibility="invisible" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
