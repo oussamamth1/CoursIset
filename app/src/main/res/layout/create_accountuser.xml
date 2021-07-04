@@ -82,16 +82,17 @@
 
             <EditText
 
-                android:id="@+id/userpasswordver"
+                android:id="@+id/Phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/userpassword"
                 android:layout_marginTop="20dp"
-                android:hint="@string/passwordVer"
-                android:inputType="textPassword" />
+
+                android:hint="@string/PhoneNumber"
+                android:inputType="phone" />
 
             <Button
-                android:id="@+id/buttonCreat"
+                android:id="@+id/buttonCreatUserAcc"
                 android:layout_width="245dp"
                 android:layout_height="70dp"
                 android:layout_below="@+id/userpasswordver"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".cotroller.DetailAc">
+    tools:context=".CoursDetail">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
 <ImageView
     android:id="@+id/Detailcoursimage"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="300dp"
     android:scaleType="centerCrop"
     />
         <LinearLayout
@@ -75,15 +75,18 @@ android:textColor="#394FCA"
 
         </LinearLayout>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="50dp"
+
+            android:layout_width="65dp"
             android:id="@+id/buttonadd"
-            android:layout_height="50dp"
+
+            android:layout_height="65dp"
             android:layout_gravity="end"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="10dp"
-            android:alpha="0.0"
+            android:alpha="0.7"
             android:elevation="6dp"
             android:src="@android:drawable/ic_input_add"
-            android:layout_marginTop="39dp"/>
+          />
 
 
     </FrameLayout>

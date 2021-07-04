@@ -1,6 +1,7 @@
 package com.example.coursiset;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.hardware.input.InputManager;
 import android.os.Build;
@@ -17,14 +18,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.constraintlayout.motion.widget.Animatable;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.coursiset.databinding.ActivityMainActivity2DBinding;
+
+import org.w3c.dom.Comment;
+
+import java.util.ArrayList;
 
 public class CoursDetail extends AppCompatActivity implements View.OnClickListener {
 
@@ -36,7 +45,12 @@ private ImageView imageCoursid;
 private TextView CoursTitle;
 private InputMethodManager manager;
 private LinearLayout revealView;
+private EditText comment;
 private FloatingActionButton  buttonadd;
+//coment
+private ArrayList<String>comments;
+private ArrayAdapter<String>arrayAdapterComent;
+private ListView commentsList;
 private boolean isEditTextVisible=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +60,20 @@ private boolean isEditTextVisible=false;
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
         setUpUI();
+        setUpAdapter();
         LoadCours();
         Toast.makeText(CoursDetail.this,"cours id "+coursid,Toast.LENGTH_SHORT).show();
         //imageCoursid.setImageResource(R.drawable.course1);
     }
+
+    private void setUpAdapter() {
+        commentsList=(ListView) findViewById(R.id.DetailCommentsListView);
+        comments=new ArrayList<>();
+
+        arrayAdapterComent=new ArrayAdapter<String>(this,R.layout.comment_row,comments);
+        commentsList.setAdapter(arrayAdapterComent);
+    }
+
     private void LoadCours() {
         Bundle bundle=getIntent().getExtras();
         coursid=bundle.getInt("cours_id");
@@ -62,6 +86,7 @@ private boolean isEditTextVisible=false;
         imageCoursid= findViewById(R.id.Detailcoursimage);
 
         CoursTitle=findViewById(R.id.detailidcourstitle);
+        comment=findViewById(R.id.edittextdetail);
         revealView=findViewById(R.id.relativeview);
         revealView.setVisibility(View.INVISIBLE);
         isEditTextVisible=false;
@@ -80,10 +105,37 @@ private boolean isEditTextVisible=false;
         switch (v.getId()){
             case R.id.buttonadd:
                 if(!isEditTextVisible){
+                    comment.requestFocus();
+                    manager.showSoftInput(comment,InputMethodManager.SHOW_IMPLICIT);
                     revaleddittext(revealView);
-                }
+                }else {hideTexxt(revealView);
+                addToComnent(comment.getText().toString().trim());
+                comment.setText("");
+                manager.hideSoftInputFromWindow(comment.getWindowToken(),0);}
                 break;
         }
+    }
+
+    private void addToComnent(String usercomment) {
+comments.add(usercomment);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void hideTexxt(final LinearLayout revealView) {
+        int cx=revealView.getRight() - 30;
+        int cy=revealView.getBottom() - 60;
+        int initailReduis=revealView.getWidth();
+        Animator anim=ViewAnimationUtils.createCircularReveal(revealView,cx,cy,initailReduis,0f);
+        revealView.setVisibility(View.VISIBLE);
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                revealView.setVisibility(View.INVISIBLE);
+            }
+        });
+       isEditTextVisible=false;
+       anim.start();
     }
 
 
